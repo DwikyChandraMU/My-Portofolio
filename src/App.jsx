@@ -551,7 +551,7 @@ export default function App() {
                   </li>
                   <li className="flex justify-between pb-3 border-b border-zinc-800/80">
                     <span className="text-zinc-400">Domisili:</span>
-                    <span className="font-semibold text-white">Semarang, Jawa Tengah</span>
+                    <span className="font-semibold text-white">Pangkalan Bun, Kalimantan Tengah</span>
                   </li>
                   <li className="flex justify-between pb-3 border-b border-zinc-800/80">
                     <span className="text-zinc-400">Minat Spesialisasi:</span>
