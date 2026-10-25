@@ -1,5 +1,7 @@
 // Impor aset profil dan proyek
 import profileImg from './assets/profile.png'; 
+import PosImg from './assets/project/PosApp.jpg'; 
+import SawitkuImg from './assets/project/sawitku.jpg'; 
 import libraryImg from './assets/project/SmartLibrary.jpg'; 
 import sitemonImg from './assets/project/SiTemonLogo.jpg'; 
 import teboxImg from './assets/project/Tebox1.jpg';
@@ -16,7 +18,7 @@ export const portfolioData = {
   // Statistik pencapaian
   stats: [
     { value: "3.78", label: "IPK (Cum Laude)" },
-    { value: "4+", label: "Proyek Nyata" },
+    { value: "6+", label: "Proyek Nyata" },
     { value: "7+", label: "Pengalaman & Asistensi" },
     { value: "100%", label: "Komitmen Dedikasi" }
   ],
@@ -26,7 +28,7 @@ export const portfolioData = {
     email: "dwikychandramu@gmail.com",
     whatsapp: "https://wa.me/6282251021591",
     whatsappDisplay: "+62 822-5102-1591",
-    location: "Semarang, Jawa Tengah, Indonesia",
+    location: "Pangkalan Bun, Kalimantan Tengah, Indonesia",
     github: "https://github.com/DwikyChandraMU",
     linkedin: "https://www.linkedin.com/in/dwiky-chandra-mulyo-utomo-aa418524b/",
     instagram: "https://www.instagram.com/dwikychandramu?igsh=MWhybzd1NHppaDB6NQ=="
@@ -95,6 +97,26 @@ export const portfolioData = {
 
   // Daftar Proyek Unggulan
   projects: [
+    {
+      title: "Point of Sale (POS) System",
+      tag: "Fullstack Web",
+      category: "Web",
+      desc: "Sistem aplikasi kasir berbasis web modern untuk mempermudah manajemen operasional penjualan. Dilengkapi dengan fitur manajemen shift pegawai, pelacakan inventaris stok barang, dan pencetakan faktur (invoice) secara akurat.",
+      tech: ["React.js", "Vite", "Tailwind CSS", "PHP", "MySQL"],
+      image: PosImg,
+      github: "https://github.com/DwikyChandraMU",
+      demo: null
+    },
+    {
+      title: "SAWITKU (Sistem Analitik Perkebunan Kelapa Sawit)",
+      tag: "Mobile App",
+      category: "Mobile",
+      desc: "Aplikasi mobile berarsitektur offline-first untuk manajemen operasional perkebunan kelapa sawit. Terintegrasi dengan fitur pemetaan poligon geospasial, pelacakan hasil panen, manajemen upah pekerja, dan pemantauan pemeliharaan kebun.",
+      tech: ["Flutter", "Dart", "Sqflite", "Provider", "Geospatial", "Isar"],
+      image: SawitkuImg,
+      github: "https://github.com/DwikyChandraMU",
+      demo: null
+    },
     {
       title: "Smart Library Analytics",
       tag: "Data Science",
