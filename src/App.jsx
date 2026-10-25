@@ -752,14 +752,14 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6">
           <SectionTitle 
             title="Experiences & Journey" 
-            subtitle="Rekam jejak pengalaman magang, asisten akademik, organisasi, dan prestasi" 
+            subtitle="Rekam jejak pengalaman kerja, magang, asisten akademik, organisasi, dan prestasi" 
           />
 
           {/* Experience Filter Tabs */}
           <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
             {[
               { id: 'all', label: 'Semua Riwayat' },
-              { id: 'work_academic', label: 'Magang & Akademik' },
+              { id: 'work_academic', label: 'Kerja & Akademik' },
               { id: 'org_award', label: 'Organisasi & Prestasi' }
             ].map((tab) => (
               <button

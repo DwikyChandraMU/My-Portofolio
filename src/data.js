@@ -19,7 +19,7 @@ export const portfolioData = {
   stats: [
     { value: "3.78", label: "IPK (Cum Laude)" },
     { value: "6+", label: "Proyek Nyata" },
-    { value: "7+", label: "Pengalaman & Asistensi" },
+    { value: "10+", label: "Pengalaman & Asistensi" },
     { value: "100%", label: "Komitmen Dedikasi" }
   ],
 
@@ -162,6 +162,20 @@ export const portfolioData = {
   // Riwayat Pengalaman & Prestasi (diberi kategori agar bisa difilter di tab)
   experiences: [
     {
+      company: "PT Harpindo Jaya",
+      role: "Staff IT Software Engineer",
+      period: "April 2026 - Agustus 2026",
+      type: "work",
+      desc: "Mengembangkan dan memelihara sistem web enterprise (HJRC, HJService, HJBengkel, dan HJYamaha) menggunakan PHP, Microsoft SQL Server, JavaScript, dan REST API untuk operasional jaringan dealer."
+    },
+    {
+      company: "JOKINERS",
+      role: "Founder & IT Freelancer",
+      period: "2023 - 2026",
+      type: "work", 
+      desc: "Menyediakan layanan digital komprehensif termasuk pengembangan perangkat lunak, pengolahan data, desain grafis, dan formatting dokumen tingkat lanjut."
+    },
+    {
       company: "Perpustakaan Provinsi Jawa Tengah",
       role: "IT Developer Internship",
       period: "2025 - 2026",
@@ -209,6 +223,13 @@ export const portfolioData = {
       period: "2023 - 2024",
       type: "academic",
       desc: "Mendampingi instruktur dalam pelatihan Teknologi Informasi Dasar untuk mahasiswa baru di lingkungan universitas."
+    },
+    {
+      company: "CV. Gratia Computer",
+      role: "Software & Hardware Technician",
+      period: "2021 - 2022",
+      type: "work",
+      desc: "Menangani instalasi software, perakitan komputer, instalasi CCTV, maintenance hardware, serta mengelola operasional kasir dan penjualan."
     }
   ]
 };
