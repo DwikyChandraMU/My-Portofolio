@@ -146,7 +146,7 @@ export default function App() {
   // Filter proyek
   const filteredProjects = projectFilter === 'Semua'
     ? portfolioData.projects
-    : portfolioData.projects.filter(p => p.category.toLowerCase() === projectFilter.toLowerCase());
+    : portfolioData.projects.filter(p => (p.category || '').trim().toLowerCase() === projectFilter.trim().toLowerCase());
 
   // Filter pengalaman
   const filteredExperiences = portfolioData.experiences.filter(exp => {
@@ -161,7 +161,7 @@ export default function App() {
       
       {/* --- SCROLL PROGRESS BAR --- */}
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-orange-600 via-orange-500 to-amber-400 transform origin-left z-[100]"
+        className="fixed top-0 left-0 right-0 h-0.75 bg-linear-to-r from-orange-600 via-orange-500 to-amber-400 transform origin-left z-100"
         style={{ scaleX: scrollYProgress }}
       />
 
@@ -199,8 +199,8 @@ export default function App() {
 
       {/* --- BACKGROUND GLOW ACCENTS --- */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-[130px] pointer-events-none -z-10" />
-      <div className="absolute top-[1200px] right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
-      <div className="absolute top-[2400px] left-10 w-96 h-96 bg-orange-600/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-300 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-600 left-10 w-96 h-96 bg-orange-600/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       {/* --- NAVBAR DINAMIS & RESPONSIF --- */}
       <motion.header 
@@ -216,7 +216,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group cursor-pointer">
-            <span className="w-9 h-9 rounded-xl bg-gradient-to-tr from-orange-600 to-orange-400 flex items-center justify-center font-black text-black text-lg shadow-[0_0_15px_rgba(249,115,22,0.5)] group-hover:scale-105 transition-transform">
+            <span className="w-9 h-9 rounded-xl bg-linear-to-tr from-orange-600 to-orange-400 flex items-center justify-center font-black text-black text-lg shadow-[0_0_15px_rgba(249,115,22,0.5)] group-hover:scale-105 transition-transform">
               D
             </span>
             <span className="font-extrabold text-2xl tracking-tight text-white group-hover:text-orange-400 transition-colors">
@@ -239,7 +239,7 @@ export default function App() {
                   {isActive && (
                     <motion.div
                       layoutId="active-nav-indicator"
-                      className="absolute left-0 right-0 bottom-[-2px] h-[2px] bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.8)]"
+                      className="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.8)]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -335,12 +335,12 @@ export default function App() {
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
               className="text-4xl sm:text-5xl lg:text-6xl font-black mb-3 tracking-tight leading-tight"
             >
-              Hi, Saya <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-300">Dwiky Chandra</span>
+              Hi, Saya <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 via-orange-500 to-amber-300">Dwiky Chandra</span>
             </motion.h1>
             
             <motion.div 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              className="text-lg sm:text-2xl font-bold mb-5 tracking-wide h-[36px] flex items-center"
+              className="text-lg sm:text-2xl font-bold mb-5 tracking-wide h-9 flex items-center"
             >
               <span className="text-zinc-400 mr-2">I am a</span>
               <TypeAnimation
@@ -383,7 +383,7 @@ export default function App() {
             >
               <a 
                 href="#contact"
-                className="px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white shadow-[0_0_25px_rgba(249,115,22,0.4)] hover:shadow-[0_0_35px_rgba(249,115,22,0.6)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center gap-2"
+                className="px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base bg-linear-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white shadow-[0_0_25px_rgba(249,115,22,0.4)] hover:shadow-[0_0_35px_rgba(249,115,22,0.6)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center gap-2"
               >
                 <Mail size={18} />
                 Hubungi Saya
@@ -412,16 +412,16 @@ export default function App() {
             <motion.div 
               animate={{ y: [-8, 8, -8] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="relative w-[270px] h-[310px] sm:w-[320px] sm:h-[360px] lg:w-[360px] lg:h-[400px] flex items-center justify-center"
+              className="relative w-67.5 h-77.5 sm:w-80 sm:h-90 lg:w-90 lg:h-100 flex items-center justify-center"
             >
               {/* Glowing Aura Rings */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-orange-600/40 via-amber-500/20 to-transparent blur-3xl rounded-full animate-pulse" />
+              <div className="absolute inset-0 bg-linear-to-tr from-orange-600/40 via-amber-500/20 to-transparent blur-3xl rounded-full animate-pulse" />
               <div className="absolute inset-3 border border-orange-500/30 rounded-3xl rotate-3" />
               <div className="absolute inset-3 border border-white/10 rounded-3xl -rotate-3" />
               
               {/* Frame Background Card */}
-              <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/90 to-zinc-950/90 border border-zinc-700/60 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
-                <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black via-black/40 to-transparent z-20 pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-b from-zinc-900/90 to-zinc-950/90 border border-zinc-700/60 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
+                <div className="absolute bottom-0 inset-x-0 h-32 bg-linear-to-t from-black via-black/40 to-transparent z-20 pointer-events-none" />
                 <img 
                   src={portfolioData.profileImage} 
                   alt={portfolioData.name} 
@@ -461,7 +461,7 @@ export default function App() {
               key={idx}
               className="bg-zinc-900/40 border border-zinc-800/80 hover:border-orange-500/40 rounded-2xl p-4 sm:p-5 text-center transition-all duration-300 hover:bg-zinc-900/70"
             >
-              <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">
+              <div className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-amber-300">
                 {stat.value}
               </div>
               <div className="text-xs sm:text-sm text-zinc-400 mt-1 font-medium">
@@ -568,7 +568,7 @@ export default function App() {
               </div>
 
               {/* Callout Box */}
-              <div className="bg-gradient-to-r from-orange-600/15 via-orange-500/10 to-transparent border border-orange-500/30 rounded-3xl p-6">
+              <div className="bg-linear-to-r from-orange-600/15 via-orange-500/10 to-transparent border border-orange-500/30 rounded-3xl p-6">
                 <div className="text-orange-400 font-bold text-sm mb-1">Siap Berkolaborasi?</div>
                 <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-4">
                   Terbuka untuk posisi Software Engineer, Mobile Developer, Data Analyst, maupun proyek lepas (freelance).
@@ -736,13 +736,9 @@ export default function App() {
           {/* Projects Grid */}
           <motion.div 
             layout
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+            className="relative grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
           >
-            <AnimatePresence>
+            <AnimatePresence mode="popLayout">
               {filteredProjects.map((proj) => (
                 <ProjectCard key={proj.title} project={proj} />
               ))}
@@ -782,13 +778,9 @@ export default function App() {
 
           <motion.div 
             layout
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
+            className="relative grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
           >
-            <AnimatePresence>
+            <AnimatePresence mode="popLayout">
               {filteredExperiences.map((exp) => (
                 <ExperienceCard key={exp.company + exp.role} experience={exp} />
               ))}
@@ -798,7 +790,7 @@ export default function App() {
       </section>
 
       {/* --- CONTACT SECTION --- */}
-      <section id="contact" className="py-24 relative z-10 pb-28 border-t border-white/5 bg-gradient-to-b from-transparent via-orange-950/5 to-orange-900/10">
+      <section id="contact" className="py-24 relative z-10 pb-28 border-t border-white/5 bg-linear-to-b from-transparent via-orange-950/5 to-orange-900/10">
         <div className="max-w-5xl mx-auto px-6">
           <SectionTitle 
             title="Get In Touch" 
@@ -899,9 +891,9 @@ export default function App() {
               viewport={{ once: true }}
               className="lg:col-span-7"
             >
-              <div className="relative p-[1.5px] rounded-[24px] overflow-hidden group">
+              <div className="relative p-[1.5px] rounded-3xl overflow-hidden group">
                 <div 
-                  className="absolute inset-0 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 opacity-40 group-hover:opacity-100 transition-opacity duration-500" 
+                  className="absolute inset-0 bg-linear-to-r from-orange-500 via-amber-500 to-orange-600 opacity-40 group-hover:opacity-100 transition-opacity duration-500" 
                   style={{ backgroundImage: 'conic-gradient(from 0deg, transparent 70%, #f97316 100%)' }}
                 />
                 
@@ -955,7 +947,7 @@ export default function App() {
                       className={`w-full py-3.5 rounded-xl font-bold text-sm text-white transition-all shadow-[0_10px_20px_rgba(249,115,22,0.25)] hover:shadow-[0_10px_25px_rgba(249,115,22,0.45)] cursor-pointer ${
                         isSubmitting 
                           ? 'bg-zinc-700 cursor-not-allowed text-zinc-400' 
-                          : 'bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 hover:brightness-110'
+                          : 'bg-linear-to-r from-orange-600 via-orange-500 to-amber-500 hover:brightness-110'
                       }`}
                     >
                       {isSubmitting ? 'Sedang Mengirim Pesan...' : 'Kirim Pesan Sekarang →'}
@@ -1054,7 +1046,7 @@ const SectionTitle = ({ title, subtitle }) => (
     <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight uppercase">
       {title}
     </h2>
-    <div className="w-16 h-1 bg-gradient-to-r from-orange-600 to-amber-400 rounded-full mt-3 mb-3"></div>
+    <div className="w-16 h-1 bg-linear-to-r from-orange-600 to-amber-400 rounded-full mt-3 mb-3"></div>
     {subtitle && (
       <p className="text-zinc-400 text-xs sm:text-sm max-w-lg mt-1">
         {subtitle}
@@ -1091,7 +1083,7 @@ const ServiceCard = ({ title, icon, desc }) => (
     whileHover={{ y: -8 }}
     className="group relative bg-zinc-900/30 backdrop-blur-sm border border-zinc-800 hover:border-orange-500/50 rounded-2xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300 z-10 overflow-hidden"
   >
-    <div className="absolute inset-0 bg-gradient-to-b from-orange-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+    <div className="absolute inset-0 bg-linear-to-b from-orange-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
     <div className="w-14 h-14 bg-zinc-900 border border-zinc-700 group-hover:border-orange-500 group-hover:bg-orange-500/10 rounded-2xl mb-6 flex items-center justify-center text-zinc-400 group-hover:text-orange-400 transition-all duration-300 shadow-lg relative z-10">
       {icon}
     </div>
@@ -1102,15 +1094,16 @@ const ServiceCard = ({ title, icon, desc }) => (
   </motion.div>
 );
 
-const ProjectCard = ({ project }) => (
+const ProjectCard = React.forwardRef(({ project }, ref) => (
   <motion.div 
+    ref={ref}
     layout
-    variants={{
-      hidden: { opacity: 0, scale: 0.95 },
-      visible: { opacity: 1, scale: 1 }
-    }}
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0, scale: 0.95 }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
     whileHover={{ y: -8 }}
-    className="group flex flex-col bg-zinc-900/30 backdrop-blur-sm border border-zinc-800 hover:border-orange-500/50 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+    className="group flex flex-col bg-zinc-900/30 backdrop-blur-sm border border-zinc-800 hover:border-orange-500/50 rounded-3xl overflow-hidden transition-colors duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
   >
     {/* Image Container */}
     <div className="w-full bg-zinc-800/60 aspect-video relative overflow-hidden">
@@ -1119,7 +1112,7 @@ const ProjectCard = ({ project }) => (
         alt={project.title} 
         className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
       
       {/* Category Tag */}
       <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-white/10 text-orange-400 text-[11px] font-bold px-3.5 py-1 rounded-full z-10">
@@ -1128,11 +1121,11 @@ const ProjectCard = ({ project }) => (
     </div>
     
     {/* Content Container */}
-    <div className="p-7 flex flex-col flex-grow relative z-10">
+    <div className="p-7 flex flex-col grow relative z-10">
       <h3 className="text-xl font-bold mb-2.5 text-white group-hover:text-orange-400 transition-colors">
         {project.title}
       </h3>
-      <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
+      <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-6 grow">
         {project.desc}
       </p>
       
@@ -1171,9 +1164,10 @@ const ProjectCard = ({ project }) => (
       </div>
     </div>
   </motion.div>
-);
+));
+ProjectCard.displayName = 'ProjectCard';
 
-const ExperienceCard = ({ experience }) => {
+const ExperienceCard = React.forwardRef(({ experience }, ref) => {
   // Tentukan ikon berdasarkan tipe
   const getIcon = () => {
     switch (experience.type) {
@@ -1190,13 +1184,14 @@ const ExperienceCard = ({ experience }) => {
 
   return (
     <motion.div 
+      ref={ref}
       layout
-      variants={{
-        hidden: { opacity: 0, y: 25 },
-        visible: { opacity: 1, y: 0 }
-      }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       whileHover={{ scale: 1.02 }}
-      className="group border border-zinc-800 bg-zinc-900/30 hover:bg-zinc-900/60 hover:border-orange-500/40 rounded-2xl p-6 sm:p-7 flex flex-col text-left transition-all duration-300 relative overflow-hidden"
+      className="group border border-zinc-800 bg-zinc-900/30 hover:bg-zinc-900/60 hover:border-orange-500/40 rounded-2xl p-6 sm:p-7 flex flex-col text-left transition-colors duration-300 relative overflow-hidden"
     >
       <div className="flex items-start justify-between gap-3 mb-4 relative z-10">
         <div className="flex items-center gap-3">
@@ -1224,4 +1219,5 @@ const ExperienceCard = ({ experience }) => {
       </p>
     </motion.div>
   );
-};
+});
+ExperienceCard.displayName = 'ExperienceCard';
